@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert(this.innerHTML)">Texto para el alert</button>
+
+
+    <div onclick="clickHandler()">
+        <p onclick="alert(this.tagName+'Fase: '+event.eventPhase)">Hola</p>
+
+        Aló!
+    </div>
+
+<script>
+    function clickHandler() {
+        alert('-target:'+event.target.tagName + '  current: '+ event.currentTarget.tagName +' Fase: '+event.eventPhase)
+        event.stopPropagation();
+      }
+</script>
+</body>
+</html>

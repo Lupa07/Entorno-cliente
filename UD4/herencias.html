@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    const parent={
+        val:42,
+        get:function(){
+            return this.val;
+        }
+    }
+    var child=Object.create(parent);
+    
+    var grandchild=Object.create(child);
+
+    function persona(nombre, apellido, edad, genero, intereses){
+        this.name={nombre,apellido};
+        this.edad= edad;
+        this.genero=genero;
+        this.intereses=intereses;
+        persona.prototype.saludar=function (){alert('Hola '+this.name.nombre);}
+    }
+    </script>
+</body>
+</html>

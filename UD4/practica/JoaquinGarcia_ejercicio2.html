@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='mostrarSuma'></div>
+  <script>
+    var n = prompt("¿Cuantos numeros deseas mostrar?");
+    
+    var a = [0, 1]
+    document.write('0'+'<br>');
+    //bucle para volvar los numeros y seguir con la serie
+    for (var i = 2; i < n; i++) {
+      a.push(a[i - 1] + a[i - 2]);
+      document.writeln(a[i - 1] + "<br>");
+    }
+
+    //SEGUNDA PARTE
+    var sumaTotal = ""
+
+
+    for (var i = 0; i < a.length-1 ; i++) {
+      sumaTotal += a[i];
+
+      if (1 + i < a.length - 1) {
+        sumaTotal =sumaTotal+ '+'
+      }
+    }
+
+    var resultadoFinal = eval(sumaTotal);
+    document.getElementById('mostrarSuma').innerHTML = 'La suma de los numeros generados es: ' + sumaTotal + ' = ' + resultadoFinal;
+
+
+
+  </script>
+</body>
+
+</html>

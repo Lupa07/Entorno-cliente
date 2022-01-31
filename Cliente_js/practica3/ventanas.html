@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>Gestión de ventanas</h1>
+    <input type="text" id="pagina"></input>
+    <button onclick=irA()>URL</button>
+    <button onclick=ventanaescrita()>Que escriba hola</button>
+    <button onclick=cerrarVentana()>Cerrar ventana</button>
+    <button onclick=irALocation()>URL con Location</button>
+
+    <p id='texto'></p>
+    <script>
+        var ventanita;
+        function ventana() {
+            window.open("https://www.w3schools.com", "mi ventana", "width=300,height=300");
+        }
+        function ventanaescrita() {
+            ventanita = window.open("", "miventana", "width=300,height=300");
+            ventanita.document.write('<p>HOLA</p>');
+            ventanita.document.write('<button onclick=opener.close()>Cerrar padre</button>');
+
+
+        }
+
+        function cerrarVentana() {
+            ventanita.close();
+            document.getElementById('texto').innerHTML = "<p>Ventana Cerrada</p>";
+        }
+
+        function irALocation() {
+            var url = document.getElementById('pagina').value;
+            ventanita.location = url;
+        }
+    </script>
+</body>
+
+</html>

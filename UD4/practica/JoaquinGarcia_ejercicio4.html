@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class Forma{
+            constructor(x,y){
+            this.primerValor=x;
+            this.segundoValor=y;
+            }
+            getArea(){
+                console.log('Calcular area')
+            }
+        }
+
+        
+        class Circulo extends Forma {
+           constructor(x,y,radio){
+               super(x,y);
+               this.radio=radio;
+           }
+           getArea(){
+               var areaCirculo=Math.PI*(Math.pow(this.radio,2));
+               console.log('El area del Circulo es: '+areaCirculo);
+           }
+        }
+
+        class Cuadrdado extends Forma{
+            constructor (x,y, ancho, largo){
+                super(x,y);
+                this.ancho=ancho;
+                this.largo=largo;
+            }
+            getArea(){
+                var areaCuadrado=this.ancho*this.largo;
+                console.log('El area del Cuadrdado es: '+ areaCuadrado);
+            }
+        }
+
+
+        class Triangulo extends Forma{
+            constructor(x,y,base,altura){
+                super(x,y);
+                this.base=base;
+                this.altura=altura;
+            }
+            getArea(){
+               var areaTriangulo=(this.base*this.altura)/2;
+                console.log('El area del Triangulo es: '+areaTriangulo);
+            }
+        }
+
+      let ciculo=new Circulo(1,3,5);
+      ciculo.getArea();
+      let cuadrado=new Cuadrdado(3,4,6,6);
+      cuadrado.getArea();
+      let triangulo=new Triangulo(3,4,5,9);
+      triangulo.getArea();
+
+    </script>
+</body>
+
+</html>

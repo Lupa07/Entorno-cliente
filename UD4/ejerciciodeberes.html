@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Array con 3 personas y ordeandor con el sort mediante el nombre y mediante la edad
+
+
+    <p id="original"></p>
+
+    <p id="demo"></p>
+    <br>
+    <p id="color"></p>
+  
+  
+    <script>
+  
+      //  crear 3 objetos personas y las metemos en un array
+  
+      //array de tres personas, cada uno con datos diferentes
+  
+      // que ese array de personas se ordene con el sort, primero por nombre y luego por edad. Hay que crearse dos nombre siguales con edades diferentes
+  
+      function Person(nombre, apellido, edad, genero) {
+        this.nombreCompleto = {
+          nombre,
+          apellido
+        };
+        this.edad = edad;
+        this.genero = genero;
+      };
+      var persona1 = new Person("Joaquin", "Garcia", 27);
+      var persona2 = new Person("Pepe", "Lopez", 32);
+      var persona3 = new Person("Pepe", "Vazquez", 15);
+     
+      
+  
+      const Personas = [persona1, persona2, persona3];
+  
+  
+      // PRIMERO MUESTRO EL ORIGINAL
+      var original = "";
+      for (let i = 0; i < Personas.length; i++) {
+        original += Personas[i].nombreCompleto.nombre + " " + Personas[i].nombreCompleto.apellido + " " + Personas[i].edad + "<br>";
+  
+      }
+  
+      document.getElementById("original").innerHTML = original;
+  
+  
+   
+  
+  //AHORA LO MUESTRO ORDENADO
+      
+  
+      var ordenacionNombre = Personas.sort(
+        function (a, b) {
+       
+          if (a.nombreCompleto.nombre > b.nombreCompleto.nombre) {
+            x = 1;
+          } else if (a.nombreCompleto.nombre < b.nombreCompleto.nombre) {
+            x = -1;
+          } else { // SI TIENEN EL MISMO NOMBRE, DISTINGO POR SU EDAD
+            if (a.edad > b.edad) { 
+              x = 1
+            } else {
+              x = -1;
+            }
+  
+          }
+  
+          return x
+        });
+  
+        /* a = a.nombreCompleto.nombre;
+             b = b.nombreCompleto.nombre;*/
+  
+        
+      var concatenado = "";
+      for (let i = 0; i < Personas.length; i++) {
+        var datosPersona=ordenacionNombre[i];
+        concatenado += datosPersona.nombreCompleto.nombre + " " + datosPersona.nombreCompleto.apellido + " " + datosPersona.edad + "<br>";
+  
+      }
+  
+      document.getElementById("demo").innerHTML = concatenado;
+  
+    </script>
+  
+  
+  
+  
+  
+  </body>
+</body>
+</html>

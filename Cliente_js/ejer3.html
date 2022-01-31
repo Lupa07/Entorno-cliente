@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*hola que*/
+      function compare(frase1, frase2, ignoreCase) {
+        if (ignoreCase) {
+          if (frase1.toLowerCase() === frase2.toLowerCase()) {
+            return 0;
+          }
+          if (frase1.toLowerCase() > frase2.toLowerCase()) {
+            return -1;
+          }
+          return 1;
+        }
+        if (frase1 == frase2) {
+          return 0;
+        }
+        if (frase1 > frase2) {
+          return -1;
+        }
+        return 1;
+      }
+
+      function isEqual(frase1, frase2, ignoreCase) {
+        var result;
+        if (ignoreCase) {
+          result = frase1.toLowerCase() === frase2.toLowerCase();
+        } else {
+          result = frase1 == frase2;
+        }
+        return result;
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      isEqual();
+    </script>
+  </body>
+</html>

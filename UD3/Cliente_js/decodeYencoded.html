@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>JavaScript Global Methods</h1>
+    <h2>The decodeURI() Method</h2>
+
+    <p id="demo"></p>
+    <ul id="lista">
+      <li>Primer L1</li>
+    </ul>
+    <script>
+      let uri = "http://test.asp?name=ståle&car=saab";
+      let encoded = encodeURI(uri);
+      let decoded = decodeURI(encoded);
+
+      document.getElementById("demo").innerHTML =
+        "Encoded URI:<br>" +
+        encoded +
+        "<br><br>" +
+        "Decoded URI:<br>" +
+        decoded;
+
+      function suma(s1 = 0, s2 = 0, s3 = 0) {
+        var total = s1 + s2 + s3;
+        alert(total);
+      }
+
+      // suma(1, 2);
+
+      //Escribir una función que reciba como parámetro dos números decimales: iva y precio.
+      //Devolverá el precio con iva. Al invocar a la función, ¿qué pasa si no se le introduce alguno de los parámetros?¿y si se introducen más parámetros de la cuenta?
+
+      function añadeIva(precio, iva) {
+        var totalIva = (precio * iva) / 100 + precio;
+        alert(totalIva);
+      }
+      function añadeIva(precio, iva) {
+        var totalIva = (precio * iva) / 100;
+        alert(totalIva);
+      }
+      // añadeIva(100, 21);
+
+      function humano(num) {
+        var num = prompt("Introduce le resultado de 144/12");
+        if (verificado(num)) {
+          alert("Ere un humano");
+        } else {
+          alert("Ere un maquina");
+        }
+        function verificado(num) {
+          if (num == 13) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+
+      function contar(x) {
+        if (x == 0) {
+          return;
+        }
+        crearHTML(x);
+        contar(x - 1);
+        console.log(x);
+      }
+      contar(5);
+
+      function crearHTML(valor) {
+        var nuevoli = document.createElement("li");
+        var nuevovalor = document.createTextNode(valor);
+        nuevoli.appendChild(nuevovalor);
+        document.getElementById("lista").appendChild(nuevoli) ;
+      }
+      
+    </script>
+  </body>
+</html>

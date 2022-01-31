@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id='foreach'></p>
+    <p id='suma'></p>
+    <script>
+        let text = "";
+      const fruits = ["apple", "orange", "cherry"];
+      fruits.forEach(myFunction);
+
+      document.getElementById("foreach").innerHTML = text;
+
+      function myFunction(item, index) {
+        text += index + ": " + item + "<br>";
+      }
+
+
+      const numeros=[5,8,15,9];
+      var total=0;
+      numeros.forEach(funcionSuma);
+
+      document.getElementById('suma').innerHTML=total;
+      function funcionSuma(item,index){
+        total=total+item;
+      }
+
+
+
+      
+    </script>
+</body>
+</html>

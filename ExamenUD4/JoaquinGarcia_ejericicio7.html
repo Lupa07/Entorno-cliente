@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="arraynumAle"></p>
+    <p id="max"></p>
+    <p id="min"></p>
+
+    <script>
+      function generarRandom() {
+        return Math.floor(Math.floor(Math.random() * (11 - 1) + 1));
+      }
+
+      const numeros = [];
+
+      for (var i = 0; i <= 9; i++) {
+        numeros.push(generarRandom());
+      }
+      //array relleno
+      document.getElementById("arraynumAle").innerHTML = numeros;
+
+      //mostrar maximos y minimos
+      document.getElementById("max").innerHTML =
+        "El valor maximo es: " + verMax(numeros);
+      document.getElementById("min").innerHTML =
+        "El valor minimo es: " + verMin(numeros);
+
+      function verMax(array) {
+        this.maximo = Math.max(...numeros);
+
+        return this.maximo;
+      }
+
+      function verMin(array) {
+        this.min = Math.min(...numeros);
+        return min;
+      }
+    </script>
+  </body>
+</html>

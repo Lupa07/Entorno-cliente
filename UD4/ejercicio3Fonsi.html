@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Stack{
+             numeros = [];
+             printe(){
+                document.write(this.numeros +"<br>");
+             }
+             pushear(n){
+                this.numeros.push(n);
+                this.printe();
+             }
+             popear(){
+                this.numeros.pop(); 
+                this.printe();
+             }
+             
+        }
+        /* primero en entrar es el que sale*/
+        class Queue{
+            numeros = [];
+             printe(){
+                document.write(this.numeros +"<br>");
+            }
+            enqueue(n){
+                this.numeros.unshift(n);
+                this.printe();
+            }
+            dequeue(){
+                this.numeros.shift();
+                this.printe();
+            }
+            
+        }
+
+        var cola = new Queue();
+        var pila = new Stack();
+
+        pila.pushear(1);
+        pila.pushear(2);
+        pila.pushear(3);
+        pila.pushear(4);
+        pila.pushear(5);
+        pila.pushear(6);
+        pila.popear();
+        pila.popear();
+        cola.enqueue(1);
+        cola.enqueue(2);
+        cola.enqueue(3);
+        cola.enqueue(4);
+        cola.enqueue(5);
+        cola.enqueue(6);
+        cola.dequeue();
+        cola.dequeue();
+    </script>
+</body>
+</html>

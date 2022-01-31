@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    button{
+       margin-top: 50xp;
+    }
+</style>
+
+    <script>
+        var ventanita;
+       
+        function abrirhijo(){
+        ventanita=window.open("","miventana", "width=300,height=300, margin-top: 500xp;");
+        ventanita.document.write("<h1>Nueva ventana</h1>");
+        ventanita.document.write("<br>");
+        ventanita.document.write("Mensaje recibido: ");
+        ventanita.document.write("<br>");
+        ventanita.document.write('<button onclick="mandaapadre()">Recibido!!</button>');
+        
+    }
+    function mandaapadre(){
+        opener.getElementById('frasefinal').innerHTML='<p>Recibido!!</p>';
+    }
+
+    function mandarmensaje(){
+
+        var textoescrito=document.getElementById('texto').value;
+        ventanita.document.write(textoescrito);
+        
+    }
+    </script>
+</head>
+<body>
+    <button onclick="abrirhijo()">Abrir Ventana</button>
+    <input type="text" id="texto"></input>
+    <button onclick="mandarmensaje()">Mandar mensaje</button>
+    <p id="frasefinal"></p>
+
+</body>
+</html>

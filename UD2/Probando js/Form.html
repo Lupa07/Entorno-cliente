@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script  src="formjs.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="/action_page.pxp" method="POST" >
+        <label for="fname">Nombre</label>
+        <input type="text" id="fname" name="fname" required minlength="4"></br>
+        <label for="lname">Telefono</label>
+        <input onkeyup="validar()" type="text" id="telf" name="lname" required></br>
+        <label for="correo">Correo Electronico</label>
+        <input type="email" name="correo" required pattern="*@*">  
+
+        <input onclick="validar()" type="submit" value="submit" >
+    </form>
+    
+
+<p id="ejemplo"></p>
+ 
+<button onclick="concatenar()">Click para introducir mensaje</button>
+
+    <label for="">Nombre: </label>
+    <input id="texto" type="text">
+    <button onclick="lista()">Pull </button>
+    <ul id="listita"></ul>
+
+
+<script>
+    navegador();
+
+</script>
+<label for="">Valores: </label>
+<input id="texto1" type="text">
+<input id="texto2" type="text">
+<button onclick="calculadora()"> </button>
+<p id=resultado>El resultado de la operacion es: </p>
+
+
+
+
+<!--<input id="entrada" onkeyup="escribir2()">
+<div id="cont3"></div>
+<script>
+function escribir2() {
+valor = document.getElementById('entrada').value;
+document.getElementById('cont3').innerHTML=' '+valor;} 
+</script>
+-->
+
+
+
+</body>
+</html>

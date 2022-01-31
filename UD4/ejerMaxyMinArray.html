@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id='arraynumAle'></p>
+    <p id=maxyMin></p>
+    <p id='imprimirArray'></p>
+    
+    <script>
+        function generarRandom(){
+    return Math.floor(Math.floor(Math.random() * (10 - 1) + 1));
+}
+
+        const numeros=[generarRandom(),generarRandom(),generarRandom(),generarRandom(),generarRandom()];
+document.getElementById('arraynumAle').innerHTML=numeros;
+
+function verMaximoyMin(numeros){
+    var maximo=Math.max(...numeros);
+    var min= Math.min(...numeros);
+    var texto="el valor maximo es "+maximo+" y el valor minimo es "+min;
+    return texto;
+}
+
+
+document.getElementById('maxyMin').innerHTML=verMaximoyMin(numeros);
+
+/*tot=numerosAleatorios.length;
+
+            var mayor = 0; //hay que definirlas antes
+
+            var menor = 10; //xq el array son numeros enteros hasta 10
+
+            for (i=0;i<=tot ;i++){
+
+            if (numerosAleatorios[i]>mayor){
+
+                mayor=numerosAleatorios[i];
+
+            }
+
+            if (numerosAleatorios[i]<menor){
+
+                menor=numerosAleatorios[i];
+
+            }
+
+        }
+
+        var mayormenor = [mayor,menor];
+
+        return mayormenor;
+
+        }
+
+        document.getElementById("id3").innerHTML = masymenos(numerosAleatorios);
+        */
+    </script>
+
+    
+</body>
+</html>

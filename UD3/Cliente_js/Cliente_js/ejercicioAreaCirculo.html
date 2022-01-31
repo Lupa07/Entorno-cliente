@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function pedirR(){
+           let r= prompt("introduce el radio del circulo");
+            areaCirculo(r);
+        }
+        function areaCirculo(radio){
+            
+            let formula=Math.PI*Math.pow(radio,2);
+            alert ("El area del circulo es "+formula);
+            document.getElementById("circulo").innerHTML="<svg id='cont' height='1000' width='1000'><circle id='circulo' cx='50' cy='50' r="+radio+" stroke='black' fill='red' stroke-whidth='3' /></svg>"
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    
+<button onclick="pedirR()">Calcular area</button>
+    <p id="circulo"></p>
+    
+    
+    
+</body>
+</html>

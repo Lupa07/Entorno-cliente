@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>JavaScript Global Methods</h1>
+
+
+
+    <h2>The decodeURI() Method</h2>
+
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    <script>
+        let uri = "my test.asp?name=ståle&car=saab";
+        let encoded = encodeURI(uri);
+        let decoded = decodeURI(encoded);
+
+        document.getElementById("demo").innerHTML = "Encoded URI:<br>" + encoded;   //Este lo transforma todo
+        document.getElementById("demo2").innerHTML = "Decoded URI:<br>" + decoded;   //Este a partir de la interrogacion
+
+    </script>
+
+    <h2>The eval() Method</h2>
+
+    <p id="eval"></p>
+
+    <script>
+        let x = 10;
+        let y = 20;
+        let text = "x * y";
+        let result = eval(text);
+
+        document.getElementById("eval").innerHTML = result;
+
+
+
+        //FUNCIONES DEFINIDAS POR EL USURARIO
+
+
+        var nombrecito = function () {
+            let nombre = prompt("Nombre");
+            let apellido = prompt("Apellido");
+            let completo = nombre + " " + apellido;
+            return completo;
+        }
+
+
+        function llamada(nombrecito) {
+
+            alert("Hola vecinito " + nombrecito());
+
+        }
+      //llamada(nombrecito);
+
+
+
+
+
+//ARRAYS
+    </script>
+    <p id="colorines"></p>
+    <p id="primera"></p>
+    <p id="ultimo"></p>
+    <p id="arraybucle"></p>
+    <p id="añadirsino"></p>
+
+    <script>
+        const colores = ["rojo", "verde", "azul", "amarillo"];
+        //cambiar un valor
+        colores[1] = "marron";
+        //mostrar posiciones de array
+        document.getElementById("colorines").innerHTML = 'Todo el array: ' + colores.join('|');
+        document.getElementById("primera").innerHTML = 'Primera posicion: ' + colores[0];
+        document.getElementById("ultimo").innerHTML = 'Ultima posicion: ' + colores[colores.length - 1];
+
+        //RECORRER ARRAY Y MOSTRARLO VOLVANDOLO EN VARIABLE
+        var color = "";
+        for (var i = 0; i < colores.length; i++) {
+            color = color + colores[i] + "|";
+            document.getElementById("arraybucle").innerHTML = color;
+        }
+
+
+        //BUSCAR UN COLOR, SI ESTA BORRARLO, SI NO, AÑADIRLO
+        //var nuevoColor = prompt("Introduce un color");
+        var minusColor = nuevoColor.toLowerCase();
+        var enc = false;
+        for (var i = 0; i < colores.length; i++) {
+            if (colores[i] == minusColor) {
+                alert("El color ha sido encontrado y lo voy a eliminar del array");
+                colores.splice(i, 1);
+                enc = true;
+                break;
+            }
+        }
+        if (enc === false) {
+            alert("No encontrado y te lo voy a añadir al array");
+            colores.push(minusColor);
+        }
+
+        document.getElementById("añadirsino").innerHTML = 'ARRRAY RESULTANTE: ' + colores.join("|");
+
+    //ARRAY ASOCIATIVO
+    </script>
+
+    <p id='arrayAsociativo'></p>
+    <script>
+        const asociativo = [];
+        asociativo['rojo'] = '#123';
+        asociativo['verde'] = '#456';
+        asociativo['amarillo'] = '#789';
+
+
+        document.getElementById('arrayAsociativo').innerHTML = 'Mostrar la clave con valor ROJO' + asociativo['rojo'];
+    </script>
+    <!--SABER MAXIMOS Y MINIMOS DE UN ARRAY-->
+    <p id='arraynumAle'></p>
+    <p id=maxyMin></p>
+    <script>
+        //GENERARA RANDOM
+        function generarRandom() {
+            return Math.floor(Math.random() * (10 - 1) + 1);
+        }
+
+        const numeros = []; //declaro el array fuera y lo reitero en el bucle
+        for (var i = 0; i < 5; i++) {
+            var num = generarRandom()
+            numeros[i] = num;
+            document.getElementById('arraynumAle').innerHTML = numeros;
+        }
+
+
+        function verMaximoyMin(numeros) {
+            var maximo = Math.max(...numeros);
+            var min = Math.min(...numeros);
+            var texto = "el valor maximo es " + maximo + " y el valor minimo es " + min;
+            return texto;
+        }
+        document.getElementById('maxyMin').innerHTML = verMaximoyMin(numeros);
+    </script>
+
+
+    <!--SABER MAXIMOS Y MINIMOS DE UN ARRAY modo largo-->
+
+    <p id="arrayNum"></p>
+    <br>
+    <p id="color"></p>
+    <p id="numerosjson"></p>
+    <p id="minimo"></p>
+    <p id="maximo"></p>
+
+
+    <script>
+        //crear un array con 5 numeros al azar y   hacer una funcion que calcule el numero mas grande y el mas pequeño
+        // estudiar los random de nuevo
+        const arrayNumeros = [];
+
+        var max = 0;
+        var min = 11;
+
+        for (let i = 0; i <= 4; i++) {
+
+            arrayNumeros[i] = [Math.floor(Math.random() * (10 - 0 + 1)) + 0];
+            /*var numerosOrdenados=arrayNumeros[i].sort(
+                        function(a, b){            
+                        if(a>b){
+                            x=1;
+                        }else if (a<b){
+                            x=-1;
+                        }else{
+                            x=0;
+                        }
+                    return x});
+            */
+            if (arrayNumeros[i] > max) {
+                max = arrayNumeros[i];
+            } if (arrayNumeros[i] < min) {
+                min = arrayNumeros[i];
+            }
+        }
+
+        const arraymaxmin = [min, max];
+
+        document.getElementById("numerosjson").innerHTML = JSON.stringify(arraymaxmin); // ASI SE IMPRIME CON JSON TODO LO DEL BUCLE
+
+        document.getElementById("arrayNum").innerHTML = 'Array de  valores:' + arrayNumeros;
+        document.getElementById("minimo").innerHTML = "minimo " + min;
+        document.getElementById("maximo").innerHTML = "maximo " + max;
+
+
+
+    </script>
+
+    <p id='sumaForEach'></p>
+    <script>
+        //FOREACH
+        const numerosARRAY = [5, 8, 15, 9];
+        var total = 0;
+
+        numerosARRAY.forEach(funcionSuma);
+
+        document.getElementById('sumaForEach').innerHTML = total;
+        function funcionSuma(item, index) {
+            total = total + item;
+        }
+    </script>
+    <p id='combustible'></p>
+    <p id='arraycoche'></p>
+    <script>
+
+
+        const coche3 = { nombre: "saxo", combustible: "diesel" };
+        const coche4 = { nombre: "ceed", combustible: "gasolina" };
+        const arrayCoche = [coche3, coche4];
+        document.getElementById('combustible').innerHTML = 'Combustible del coche nº1: ' + arrayCoche[0].combustible;
+        document.getElementById('arraycoche').innerHTML = 'Valores de los objetos de un array: ' + JSON.stringify(arrayCoche);
+
+
+    </script>
+    <p id='nombreComplet1'></p>
+    <p id='nombreCompletMiguel'></p>
+    <script>
+        function animal(especie) {
+            this.especie = especie;
+        }
+        var a = new animal("perro");
+
+
+
+        const persona = {
+            nombre: "Joaquin",
+            apellido: "Garcia",
+            edad: "27",
+            getNombreCompleto: function () {
+
+                var nombreCompleto = this.nombre + " " + this.apellido;
+                return nombreCompleto;
+            }
+        };
+
+
+        
+       
+
+        // imprimimos el nombre completo con el metodo creado
+
+        console.log(persona.getNombreCompleto()); // consola
+
+        document.getElementById("nombreComplet1").innerHTML = persona.getNombreCompleto(); // parrafo
+  </script>
+
+</body>
+
+</html>

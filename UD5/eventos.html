@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="miBoton" value="click me" type="button" onclick="alert('Click 1º')"/>
+    <button id='mybutton' value='esto es un buttton' onclick="alert(this.innerHTML)">Po vale</button>
+
+
+    <script>
+       
+      function CliclHandler(event) {
+        alert("Tipo: "+event.type);
+      }
+      miBoton.onclick = CliclHandler;
+      miBoton.addEventListener('click',function(){
+            alert("Click 3º");
+        });
+     // miBoton.onclick = null;   //esto actualiza el valor de variable y dejaria de funcionar
+    </script>
+
+    
+  </body>
+</html>

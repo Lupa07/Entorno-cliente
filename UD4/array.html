@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="colorines"></p>
+    <p id="primera"></p>
+    <p id="ultimo"></p>
+    <p id="arraybucle"></p>
+    <p id="buscarColor"></p>
+    <p id="añadirsino"></p>
+    <p id="foreach"></p>
+    <script>
+      const colores = ["rojo", "verde", "azul", "amarillo"];
+      colores[1] = "marron";
+
+      document.getElementById("colorines").innerHTML = colores;
+      document.getElementById("primera").innerHTML = colores[0];
+      document.getElementById("ultimo").innerHTML = colores[colores.length - 1];
+
+      var color = "";
+      for (var i = 0; i < colores.length; i++) {
+        color = color + colores[i] + ",";
+        document.getElementById("arraybucle").innerHTML = color;
+      }
+
+      var nuevoColor = prompt("Introduce un color");
+      var minusColor = nuevoColor.toLowerCase();
+      var enc = false;
+      for (var i = 0; i < colores.length; i++) {
+        if (colores[i] == minusColor) {
+          alert("El color ha sido encontrado y lo voy a eliminar del array");
+          colores.splice(i, 1);
+          enc = true;
+          break;
+        }
+      }
+      if (enc === false) {
+        alert("No encontrado y te lo voy a añadir al array");
+        colores.push(minusColor);
+      }
+
+      document.getElementById("añadirsino").innerHTML = colores.join("|");
+
+      let text = "";
+      const fruits = ["apple", "orange", "cherry"];
+      fruits.forEach(myFunction);
+
+      document.getElementById("foreach").innerHTML = text;
+
+      function myFunction(item, index) {
+        text += index + ": " + item + "<br>";
+      }
+    </script>
+  </body>
+</html>

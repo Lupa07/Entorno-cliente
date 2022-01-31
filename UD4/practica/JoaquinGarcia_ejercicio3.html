@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <p id='stack'></p>
+  <p id='queue'></p>
+  <script>
+    class stack {
+      a = [];
+      push(n) {
+        this.a.push(n);
+        this.print();
+      };
+      pop() {
+        this.a.pop()
+        this.print();
+      }
+      print() {
+
+        document.write(this.a + '<br>');
+      }
+    };
+
+    class Queue {
+      a = [];
+      enqueue(n) {
+        this.a.unshift(n);
+        this.print();
+      };
+      dequeue() {
+        this.a.pop();
+        this.print();
+      };
+      print() {
+        document.write(this.a + '<br>');
+      }
+    };
+
+    var pruebaStack = new stack();
+    pruebaStack.push(1);
+    pruebaStack.push(2);
+    pruebaStack.push(3);
+    pruebaStack.push(4);
+    pruebaStack.push(5);
+    pruebaStack.push(6);
+    pruebaStack.pop();
+    pruebaStack.pop();
+    pruebaStack.pop();
+    pruebaStack.pop();
+    pruebaStack.pop();
+
+
+    var pruebaQueue = new Queue();
+    pruebaQueue.enqueue(1);
+    pruebaQueue.enqueue(2);
+    pruebaQueue.enqueue(3);
+    pruebaQueue.enqueue(4);
+    pruebaQueue.enqueue(5);
+    pruebaQueue.dequeue();
+    pruebaQueue.dequeue();
+    pruebaQueue.dequeue();
+
+
+
+  </script>
+</body>
+
+</html>

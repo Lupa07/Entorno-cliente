@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function palabraMayus() {
+        var frase = prompt("Introduce una frase");
+        var primera = frase.charAt(0).toLowerCase();
+        var resto="";
+        var finalresto="";
+        for (var i = 1; i < frase.length; i++) {
+          if (frase.charAt(i) == " ") {
+            resto = frase.charAt(i + 1).toUpperCase();
+            i++;
+          } else {
+            resto = frase.charAt(i);
+          }
+          finalresto+=resto;
+        }
+        var nueva = primera + finalresto;
+        alert(nueva);
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      palabraMayus();
+    </script>
+  </body>
+</html>

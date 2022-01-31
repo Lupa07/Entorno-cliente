@@ -1,0 +1,3 @@
+Se valida en ambos lados Cliente server
+Cliente validamos que esten los campos rellenos y que tenga los caracteres adecuados
+Servidor, aparte de la misma validacion como cliente tambien se validarán los datos con los ya introducidos en la BBDD.

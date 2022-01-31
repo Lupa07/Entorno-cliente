@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>frame 1</h1>
+
+    <button onclick="parent.frames[1].document.bgColor=colores()">
+      Cambia color
+    </button>
+    <button onclick="parent.document.getElementsByTagName('iframe')[0].style.border='none';">Quitar borde</button>
+
+    <script>
+      function colores() {
+        var randomColor =
+          "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+        return randomColor;
+      }
+    </script>
+  </body>
+</html>

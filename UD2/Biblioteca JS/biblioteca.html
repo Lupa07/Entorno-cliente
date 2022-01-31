@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+    </style>
+    
+    <script src="biblioteca.js">
+       
+    </script> 
+</head>
+
+<body>
+
+    <!--Botón para Numero Aleatorio-->
+    <h3>NUMERO ALEATORIO</h3>
+    <button id='numero' type="button" onclick="numeroAleatorio()">Numero Aleatorio</button>
+    <p id="parrafo1"></p>
+
+    <p>------------------------------------------------------</p>
+    
+    <!--Incrementales-->
+    <h3>Incrementales</h3>
+    <p> var primero=1;
+        <br>
+        var segundo=++primero;
+        <br>
+        var primero=1;
+        <br>
+        var segundo=primero++;</p>
+    <button id='num' type="button" onclick="incrementales()">Incrementales</button>
+    <p id="parrafo2"></p>
+    <p id="parrafo3"></p>
+
+    <p>------------------------------------------------------</p>
+    
+    <!--CUADRO PARA INSERTAR EDAD Y VER SI ES MENOR O MAYOR DE EDAD-->
+    <h3>Introducir Edad y comprobar si es mayor o menor de edad</h3>
+    <input type="text" id="edad" name="edad">
+    <button onclick="edad()">Comprobar Edad</button>
+      
+    <p>------------------------------------------------------</p>
+
+    <!--PROMPT PARA INSERTAR NOTA -->
+    <h3>Nota con palabras dependiendo de la numérica introducida a través de un prompt.</h3>
+    
+    <button onclick="nota()">PROMPT DE NOTA</button>
+
+    <p>------------------------------------------------------</p>
+
+    <!-- BOTON PARA QUE DIGA POR CONSOLA Y POR PANTALLA LOS NUMEROS IMPARES HASTA EL 20-->
+    
+    <h3>NUMEROS IMPARES: CONSOLA Y PANTALLA</h3>
+    <button onclick="numeroImpar()";"impares()">numeros impares</button>
+    <p id="impares"></p>
+
+
+    <p>------------------------------------------------------</p>
+
+    <!-- Comprobar si un numero es primo-->
+
+    <h3>NUMERO PRIMO SIGUIENTE AL INTRODUCIDO</h3>
+
+    <label for="numprimo">Introduce el numero: </label>
+    <input type="text" id="numprimo" name="numero">
+    <button onclick="primos()">Siguiente primo</button>
+    
+
+    <p>------------------------------------------------------</p>
+    
+    <!--Pedir por pantalla un numero y mostrarlo en vertical EN CONSOLA-->
+
+    <H3>NUMERO EN BOX Y MOSTRARLO VERTICAL EN CONSOLA</H3>
+
+    <label for="num">vertical</label>
+
+    <input type="text" id="numv" name="numero">
+    <button onclick="vertical()">vertical</button>
+    <p id="parrafovertical"></p>
+
+
+    <p>------------------------------------------------------</p>
+    
+    <!--Tablas del 1 al 10-->
+
+    <H3>TABLAS DEL 1 AL 10</H3>
+
+    <button onclick="tabla()">TABLAS</button>
+  
+
+    <p>------------------------------------------------------</p>
+    
+    <!--MOSTRAR PRIMOS HASTA X NORMAL Y AL REVES-->
+
+    <H3>MOSTRAR PRIMOS HASTA X NORMAL Y AL REVES</H3>
+
+    <label for="primo3">Primos</label>
+    <input type="text" id="primo3" name="primo3">
+    <button onclick="mostrarprimos()">Mostrar Primos hasta este numero</button>
+    
+    <label for="primo3">Primos</label>
+    <input type="text" id="primo3" name="primo3">
+    <button onclick="mostrarprimosalreves()">INVERSO Primos hasta este numero</button>
+
+
+
+
+
+<p>------------------------------------------------------</p>
+    
+<!--Realiza un script que pida cadenas de texto y las concatene 
+usando el carácter “-” cada vez que el usuario pulse “Seguir”
+y hasta que se pulse “Cancelar”. Al salir con “Cancelar” 
+deben mostrarse todas las cadenas concatenadas.-->
+
+    <H3>CONCATENAR TEXTOS HASTA QUE PULSEMOS CANCELAR</H3>
+
+    
+    <button onclick="encadenar2()">EMPEZAR A PEDIR PALABRAS</button>
+
+    <!--si falla mirar el ejemplo10-->
+
+    <p>------------------------------------------------------</p>
+    
+    <!--BISIESTOS-->
+    <H3>COMPROBAR BISIESTO</H3>
+
+   
+    <button onclick="bisiesto()">COMPROBAR SI ES BISIESTO</button>
+
+    <p>------------------------------------------------------</p>
+    
+    <!--DIVISION-->
+    <H3>DIVIDIR DOS NUMEROS</H3>
+
+   
+    <button onclick="division()">COMENZAR DIVISION</button>
+
+    <p>------------------------------------------------------</p>
+    
+    <!--LISTA QUE SE ACTUALIZA-->
+    <H3>LISTA DE LA COMPRA</H3>
+
+    <label for="articulos2">ARTICULO A COMPRAR</label><br>
+    <input type="text" id="articulos2" name="articulos" placeholder="inserta artículo"><br>
+    <button onclick="añadir2()"> AÑADIR A LA LISTA </button>
+    
+
+    <ul id="prueba2"></ul>
+
+    <p>------------------------------------------------------</p>
+    
+    <!--CALCULADORA-->
+    <H3>CALCULADORA</H3>
+
+    <label for="numero1">PRIMER NUMERO</label><br>
+    <input type="text" id="numero1" name="numero1" placeholder="inserta numero 1"><br>
+    <label for="numero2">SEGUNDO NUMERO</label><br>
+    <input type="text" id="numero2" name="numero2" placeholder="inserta numero 2"><br>
+    
+    <button onclick="suma()"> SUMA </button>
+    
+<p>Resultado</p>
+<p id="resultado"></p>
+    
+
+    
+    <p>------------------------------------------------------</p>
+
+<h3>CALCULADORA MIA</h3>
+<label for="">Valores: </label>
+<input id="texto1" type="text">
+<input id="texto2" type="text">
+<button onclick="calculadora()">Resultado </button>
+<p id="resultadoSuma">El resultado de la suma es: </p>
+<p id="resultadoResta">El resultado de la resta es: </p>
+<p id="resultadoMulti">El resultado del producto es: </p>
+<p id="resultadoDivision">El resultado de la divion es: </p>
+<script>
+
+ //Decir la nota con palabras dependiendo de la numérica introducida a través de un prompt.
+ //nota();
+
+
+
+    
+</script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function mandar(){
+            var valor=document.getElementById('expresion').value;
+            document.getElementById('num').innerHTML=valor;
+        }
+    </script>
+</head>
+<body>
+    <p>Introducir expresion</p>
+    <input type="number" id="expresion"></input>
+    <button onclick="mandar()">Expresion Numerica</button>
+    <p id="num"></p>
+</body>
+</html>

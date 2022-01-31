@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+  
+      
+    function holamundo() {
+         var name= prompt("Escribe tu nombre");
+        return name;
+      }
+
+      var hola = function () {
+        var name2= prompt("Escribe tu nombre");
+        return name2;
+      };
+      
+
+     var nombrecito= function (){
+         let nombre=prompt("Nombre");
+         let apellido=prompt("Apellido");
+          let completo=nombre+" "+apellido;
+          return completo;
+      }
+     
+
+      function llamada(theFunction){
+         
+          alert("Hola vecinito "+ theFunction());
+
+      }
+      llamada(holamundo);
+    </script>
+  </body>
+</html>

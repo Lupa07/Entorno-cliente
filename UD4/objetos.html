@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id='combustible'></p>
+    <p id='arraycoche'></p>
+    <p id='p1altura'></p>
+    <p id='superpersona'></p>
+    <h3>Arrays de personas</h3>
+    <p id='arrayPersonas'></p>
+    
+    <script>
+      //OBJETOS
+
+     
+
+      const coche3 = { nombre: "saxo", combustible: "diesel" };
+    const coche4 = { nombre: "ceed", combustible: "gasolina" };
+    const arrayCoche=[coche3,coche4];
+    document.getElementById('combustible').innerHTML='Combustible del coche nº1: '+arrayCoche[0].combustible;
+  
+       document.getElementById('arraycoche').innerHTML='Valores de los objetos de un array: '+JSON.stringify(arrayCoche);
+    
+      //////////////////////////////
+      function animal(especie) {
+        this.especie = especie;
+      }
+
+      var a = new animal("perro");
+
+      console.log(a);
+      // VM474:1 animal {especie: 'perro'}especie: "perro"[[Prototype]]: Object
+
+      function moto(marca, modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+      }
+
+      var moto = new moto("yamaha", "rx300");
+
+      console.log(moto);
+      // VM751:1 moto {marca: 'yamaha', modelo: 'rx300'}
+
+
+
+      /* CREA EL OBJETO PERSONA CON NOMBRE Y APELLIDO Y CREAR METODO "getNombreCompleto" Y QUE LO MUESTRE TODO*/
+
+  /*    const persona={
+          nombre:'Joaquin',
+          apellido: 'Garcia',
+          completo:function (){
+              return this.nombre+' '+this.apellido;
+          }
+
+      }
+     persona.altura=187;
+      document.getElementById('p1').innerHTML="El nombre completo es "+ persona.completo();
+      document.getElementById('p1altura').innerHTML="La altura de la persona es "+ persona.altura;
+    var persona1= new persona('Rebeca','Gutierrez');
+    var persona2= new persona('Miguel','Moreno');
+      
+    const personas=[persona1,persona2];
+    document.getElementById('arrayPersonas').innerHTML=personas[0].nombre;
+
+   
+
+     /* function superpersona(nombre,poder){this.nombre=nombre;this.poder=poder};
+      var superheroe=new superpersona('Superman','Volar');
+
+      var batman= Object.create(superpersona);
+
+      superpersona.demostrarpoder=function(){ alert("Estoy volando cabezaaaaaa");}
+      superheroe.demostrarpoder();
+*/
+
+      
+
+    </script>
+
+    
+  </body>
+</html>
