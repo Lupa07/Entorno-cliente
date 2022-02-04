@@ -10,20 +10,22 @@
 
 <body id='body'>
 
-    <input type="text" id="fila" placeholder="Nº Filas">
-    <input type="text" id="columnas" placeholder="Nº Columnas">
+    <input type="number" id="fila" placeholder="Nº Filas">
+    <input type="number" id="columnas" placeholder="Nº Columnas">
     <button id="crear" onclick="creaTabla()">Crear tabla</button>
-    <p id="mitabla"></p>
+    
     <script>
         //crear una tabla con un boton indicandole las filas y las columnas e introducirle el numero de celda
         //boton borrar contenido celda
 
 
         function creaTabla() {
+            var body = document.getElementsByTagName("body")[0];
             var valorFila = document.getElementById("fila").value;
             var valorColumn = document.getElementById("columnas").value;
 
             var etiTabla = document.createElement('TABLE');
+            etiTabla.setAttribute('border','2')
             for (let i = 0; i < valorFila; i++) {
                 var fila = document.createElement('TR')
                 for (let j = 0; j < valorColumn; j++) {
@@ -34,7 +36,7 @@
                 fila.appendChild(columna);
             }
             etiTabla.appendChild(fila);
-            document.getElementsById('mitabla').appendChild(etiTabla);
+           body.appendChild(etiTabla);
         }
     </script>
 </body>
