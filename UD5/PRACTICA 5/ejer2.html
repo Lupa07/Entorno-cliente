@@ -32,10 +32,11 @@
                     var columna = document.createElement('TD')
                     let textoCelda = document.createTextNode(i + '-' + j);
                     columna.appendChild(textoCelda);
+                    fila.appendChild(columna);
                 }
-                fila.appendChild(columna);
+                 etiTabla.appendChild(fila);
             }
-            etiTabla.appendChild(fila);
+           
            body.appendChild(etiTabla);
         }
     </script>
