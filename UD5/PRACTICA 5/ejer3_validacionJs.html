@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        
+    </style>
+  </head>
+  <body>
+    <form action="server.php" method="post" name="formulario1" onsubmit="return validateForm()"><!--get lo manda por url Acciones de lectura-->
+        <fieldset>
+        <legend>Formulario</legend>
+      <span>Name       </span>
+      <input type="text" name="nombre" autofocus /><br />
+      <span>Telf          </span>
+      <input type="text" name="number" pattern="[0-9]{9}" title="Numero de 9 digitos"/><br />
+      <label>Email       </label>
+      <input type="email" name="email"  /><br />
+      <span>Sex</span><br />     
+      
+      <select name="seleccion">
+          <option value="">Selecciona uno</option>
+          <option value="hombre">Hombre</option>
+          <option value="mujer">Mujer</option>
+      </select><br />
+      <span>Languages</span><br />
+     
+      <input type="checkbox" name="English" />
+      <label>English</label><br />     
+      <input type="checkbox" name="Spanish" />
+      <label>Spanish</label><br />    
+      <input type="checkbox" name="German" />  
+      <label>German</label><br />
+      <br />
+      <textarea name="areaTexto"></textarea>
+
+<input type="submit" />
+    </fieldset>
+    </form>
+    <script>
+     function validateForm(){
+        let nombre= document.forms["formulario1"]["nombre"].value;
+        if(nombre==""||nombre==" "){
+            document.forms["formulario1"]["nombre"].style.borderColor="red";
+            alert("El campo Nombre esta vacio");
+    return false;
+        }
+
+
+
+        let telefono= document.forms["formulario1"]["number"].value;.
+
+
+        
+        let correo=document.forms["formulario1"]["email"].value;
+        let seleccion=document.forms["formulario1"]["seleccion"].value;
+        let checkIngles=document.forms["formulario1"]["English"].value;
+        let checkEspañol=document.forms["formulario1"]["Spanish"].value;
+        let checkAleman=document.forms["formulario1"]["German"].value;
+        if(checkIngles==0){
+            alert('selecciona al menos un idioma');
+        }
+        
+
+
+        let area=document.forms["formulario1"]["areaTexto"].value;
+        
+        //con expresion regular
+        //  /^\d*$/   expresion regular para solo numeros
+
+        let re=/[0-9]/;
+        
+        if(seleccion==""){
+            document.forms["formulario1"]["seleccion"].style.borderColor="red";
+            alert("Debes selecionar un sexo");
+            return false;
+        }
+       /* if(isNaN(area)){
+            alert("Solo se admiten numeros")
+            return false;
+      
+        if(area!=re){
+            alert("Solo se admiten numeros")
+            return false;
+        
+        if(!/^\d*$/.test(area)){
+            alert("Solo se admiten numeros")
+            return false;
+        }}*/
+
+
+        if(!/^\d*$/.test(area)||area==""){
+            document.forms["formulario1"]["areaTexto"].style.borderColor="red";
+
+           
+            return false;
+        }
+
+        if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(correo))){
+            correo.setCustomValidity("no es una estructura correcta de correo");
+            return false;
+        }
+        //
+     } 
+    </script>
+  </body>
+</html>
