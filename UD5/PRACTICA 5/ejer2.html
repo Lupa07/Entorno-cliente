@@ -12,7 +12,11 @@
 
     <input type="number" id="fila" placeholder="Nº Filas">
     <input type="number" id="columnas" placeholder="Nº Columnas">
-    <button id="crear" onclick="creaTabla()">Crear tabla</button>
+    <button id="crear" onclick="creaTabla()">Crear tabla</button><br>
+
+    <input type="number" id="borrarFila" placeholder="Nº Fila a borrar">
+    <input type="number" id="borrarColumnas" placeholder="Nº Columna a borrar">
+    <button id="borrar" onclick="borrarCelda()">Borrar Celdas</button>
     
     <script>
         //crear una tabla con un boton indicandole las filas y las columnas e introducirle el numero de celda
@@ -25,12 +29,13 @@
             var valorColumn = document.getElementById("columnas").value;
 
             var etiTabla = document.createElement('TABLE');
-            etiTabla.setAttribute('border','2')
+            etiTabla.setAttribute('id','laTabla');
+            etiTabla.setAttribute('border','2');
             for (let i = 0; i < valorFila; i++) {
                 var fila = document.createElement('TR')
                 for (let j = 0; j < valorColumn; j++) {
                     var columna = document.createElement('TD')
-                    let textoCelda = document.createTextNode(i + '-' + j);
+                    let textoCelda = document.createTextNode((i+1) + '-' + (j+1));
                     columna.appendChild(textoCelda);
                     fila.appendChild(columna);
                 }
@@ -38,6 +43,13 @@
             }
            
            body.appendChild(etiTabla);
+        }
+
+        function borrarCelda(){
+            var borrarColumna= document.getElementById("borrarColumnas").value;
+            var borrarFila= document.getElementById("borrarFila").value;
+
+            document.getElementById("laTabla").rows[borrarFila-1].cells[borrarColumna-1].textContent="";
         }
     </script>
 </body>
