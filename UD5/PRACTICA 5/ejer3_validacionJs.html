@@ -8,7 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
     <style>
+        form{
+            
+            width:50%;
+            
+        }
         #formulario {
+           
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px
@@ -23,17 +29,17 @@
             <legend>Formulario</legend>
 
             <span>Name       </span>
-            <input type="text" name="nombre" id="nombre" autofocus /><br />
+            <input type="text" name="nombre" id="nombre" autofocus pattern="[A-Za-z ]{1,40}"/><br />
 
             <span>Telf          </span>
-            <input type="text" id="telefono" name="telefono" /><br />
+            <input type="text" id="telefono" name="telefono" pattern="[0-9]{9}"/><br />
 
             <label>Email       </label>
-            <input type=" email" id="email" name="email" /><br />
+            <input type=" email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/><br />
 
             <span>Sex</span><br />
 
-            <select name="seleccion">
+            <select name="seleccion" required>
                 <option value="">Selecciona uno</option>
                 <option value="hombre">Hombre</option>
                 <option value="mujer">Mujer</option>
@@ -49,7 +55,7 @@
             <label>German</label><br />
             <br />
 
-            <textarea name="areaTexto"></textarea><br />
+            <textarea name="areaTexto" minlength="5" maxlength="500"></textarea><br />
 
             <input type="submit" />
         </fieldset>
@@ -60,10 +66,10 @@
 
         const expresiones = {
 
-            nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+            nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios
             correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-            telefono: /^\d{9}$/, // 7 a 14 numeros.
-            areadeTexto: /^[a-zA-Z0-9\_\-]{4,16}$/
+            telefono: /^\d{9}$/, // 9 digitios
+            areadeTexto: /^[a-zA-ZÀ-ÿ\s]{4,16}$/
 
         }
 
@@ -75,6 +81,7 @@
                         document.forms["formulario1"]["nombre"].style.borderColor = "green";
                     } else {
                         document.forms["formulario1"]["nombre"].style.borderColor = "red";
+
                     }
                     break;
 
@@ -83,6 +90,7 @@
                         document.forms["formulario1"]["telefono"].style.borderColor = "green";
                     } else {
                         document.forms["formulario1"]["telefono"].style.borderColor = "red";
+
                     }
                     break;
                 case "email":
@@ -94,14 +102,15 @@
 
                     break;
                 case 'areaTexto':
-                    if(expresiones.areadeTexto.test(e.target.value)){
-                        document.forms["formulario1"]["email"].style.borderColor = "green";
+                    if (expresiones.areadeTexto.test(e.target.value)) {
+                        document.forms["formulario1"]["areaTexto"].style.borderColor = "green";
                     } else {
-                        document.forms["formulario1"]["email"].style.borderColor = "red";
-                    }   
-                    
+                        document.forms["formulario1"]["areaTexto"].style.borderColor = "red";
+                        areaTexto.setCustomValidity("No se permiten numeros")
+                    }
+                    break;
             }
-                
+
 
         }
 
@@ -109,6 +118,46 @@
             input.addEventListener('keyup', validarFormulario)
             input.addEventListener('blur', validarFormulario)
         })
+
+        
+        //mensajes de error
+        const inputNombre = document.getElementById('nombre');
+        inputNombre.addEventListener("keyup", function (event) {
+            if (inputNombre.validity.patternMismatch) {
+                inputNombre.setCustomValidity("No puedes poner simbolos en este campo");
+            } else {
+                inputNombre.setCustomValidity("");
+            }
+        });
+
+        const inputTelefono = document.getElementById('telefono');
+        inputTelefono.addEventListener("keyup", function (event) {
+            if (inputTelefono.validity.patternMismatch) {
+                inputTelefono.setCustomValidity("El formato de telefono es de 9 dígitos");
+            } else {
+                inputTelefono.setCustomValidity("");
+            }
+        });
+
+        const inputEmail=document.getElementById('email');
+        inputEmail.addEventListener("keyup", function (event) {
+            if (inputEmail.validity.patternMismatch) {
+                inputEmail.setCustomValidity("El formato de correo es correo@correo.com");
+            } else {
+                inputEmail.setCustomValidity("");
+            }
+        });
+
+        const inputAreaTexto=document.getElementById('areaTexto');
+        inputAreaTexto.addEventListener("keyup", function (event) {
+            if (inputAreaTexto.validity.patternMismatch) {
+                inputAreaTexto.setCustomValidity("Te faltan aun "+inputAreaTexto.length+"caracteres");
+            } else {
+                inputAreaTexto.setCustomValidity("");
+            }
+        });
+
+
 
         formulario.addEventListener('submit', (e) => {
             e.preventDefault();
