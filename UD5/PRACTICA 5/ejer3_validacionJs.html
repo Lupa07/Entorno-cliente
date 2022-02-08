@@ -1,110 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
     <style>
-        
+        #formulario {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px
+        }
     </style>
-  </head>
-  <body>
-    <form action="server.php" method="post" name="formulario1" onsubmit="return validateForm()"><!--get lo manda por url Acciones de lectura-->
-        <fieldset>
-        <legend>Formulario</legend>
-      <span>Name       </span>
-      <input type="text" name="nombre" autofocus /><br />
-      <span>Telf          </span>
-      <input type="text" name="number" pattern="[0-9]{9}" title="Numero de 9 digitos"/><br />
-      <label>Email       </label>
-      <input type="email" name="email"  /><br />
-      <span>Sex</span><br />     
-      
-      <select name="seleccion">
-          <option value="">Selecciona uno</option>
-          <option value="hombre">Hombre</option>
-          <option value="mujer">Mujer</option>
-      </select><br />
-      <span>Languages</span><br />
-     
-      <input type="checkbox" name="English" />
-      <label>English</label><br />     
-      <input type="checkbox" name="Spanish" />
-      <label>Spanish</label><br />    
-      <input type="checkbox" name="German" />  
-      <label>German</label><br />
-      <br />
-      <textarea name="areaTexto"></textarea>
+</head>
 
-<input type="submit" />
-    </fieldset>
+<body>
+    <form action="server.php" method="post" id="formulario" name="formulario1">
+        <!--get lo manda por url Acciones de lectura-->
+        <fieldset>
+            <legend>Formulario</legend>
+
+            <span>Name       </span>
+            <input type="text" name="nombre" id="nombre" autofocus /><br />
+
+            <span>Telf          </span>
+            <input type="text" id="telefono" name="telefono" /><br />
+
+            <label>Email       </label>
+            <input type=" email" id="email" name="email" /><br />
+
+            <span>Sex</span><br />
+
+            <select name="seleccion">
+                <option value="">Selecciona uno</option>
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+            </select><br />
+
+            <span>Languages</span><br />
+
+            <input type="checkbox" name="English" />
+            <label>English</label><br />
+            <input type="checkbox" name="Spanish" />
+            <label>Spanish</label><br />
+            <input type="checkbox" name="German" />
+            <label>German</label><br />
+            <br />
+
+            <textarea name="areaTexto"></textarea><br />
+
+            <input type="submit" />
+        </fieldset>
     </form>
     <script>
-     function validateForm(){
-        let nombre= document.forms["formulario1"]["nombre"].value;
-        if(nombre==""||nombre==" "){
-            document.forms["formulario1"]["nombre"].style.borderColor="red";
-            alert("El campo Nombre esta vacio");
-    return false;
+        const formulario = document.getElementById("formulario");
+        const inputs = document.querySelectorAll("#formulario input");
+
+        const expresiones = {
+
+            nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+            correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+            telefono: /^\d{9}$/, // 7 a 14 numeros.
+            areadeTexto: /^[a-zA-Z0-9\_\-]{4,16}$/
+
         }
 
+        const validarFormulario = (e) => {
+            switch (e.target.name) {  //indica el valor name del input
+                case "nombre":
 
+                    if (expresiones.nombre.test(e.target.value)) {
+                        document.forms["formulario1"]["nombre"].style.borderColor = "green";
+                    } else {
+                        document.forms["formulario1"]["nombre"].style.borderColor = "red";
+                    }
+                    break;
 
-        let telefono= document.forms["formulario1"]["number"].value;
+                case "telefono":
+                    if (expresiones.telefono.test(e.target.value)) {
+                        document.forms["formulario1"]["telefono"].style.borderColor = "green";
+                    } else {
+                        document.forms["formulario1"]["telefono"].style.borderColor = "red";
+                    }
+                    break;
+                case "email":
+                    if (expresiones.correo.test(e.target.value)) {
+                        document.forms["formulario1"]["email"].style.borderColor = "green";
+                    } else {
+                        document.forms["formulario1"]["email"].style.borderColor = "red";
+                    }
 
+                    break;
+                case 'areaTexto':
+                    if(expresiones.areadeTexto.test(e.target.value)){
+                        document.forms["formulario1"]["email"].style.borderColor = "green";
+                    } else {
+                        document.forms["formulario1"]["email"].style.borderColor = "red";
+                    }   
+                    
+            }
+                
 
-
-        let correo=document.forms["formulario1"]["email"].value;
-        let seleccion=document.forms["formulario1"]["seleccion"].value;
-        let checkIngles=document.forms["formulario1"]["English"].value;
-        let checkEspañol=document.forms["formulario1"]["Spanish"].value;
-        let checkAleman=document.forms["formulario1"]["German"].value;
-        if(checkIngles==0){
-            alert('selecciona al menos un idioma');
         }
+
+        inputs.forEach((input) => {
+            input.addEventListener('keyup', validarFormulario)
+            input.addEventListener('blur', validarFormulario)
+        })
+
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+        });
+
+
+
+
+
+
+
+
+        /*   $('#email').first().keyup(function () {
+               var $email = this.value;
+               validateEmail($email);
+           });
+   
+           function validateEmail(email) {
+               var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+               if (!emailReg.test(email)) {
+                   document.forms["formulario1"]["email"].style.borderColor = "red";
+                   
+               } else {
+                   document.forms["formulario1"]["email"].style.borderColor = "gr";
+               }
+           }
+   */
+
+
+        /*
+                let telefono = document.forms["formulario1"]["number"].value;
         
-
-
-        let area=document.forms["formulario1"]["areaTexto"].value;
         
-        //con expresion regular
-        //  /^\d*$/   expresion regular para solo numeros
-
-        let re=/[0-9]/;
         
-        if(seleccion==""){
-            document.forms["formulario1"]["seleccion"].style.borderColor="red";
-            alert("Debes selecionar un sexo");
-            return false;
-        }
-       /* if(isNaN(area)){
-            alert("Solo se admiten numeros")
-            return false;
-      
-        if(area!=re){
-            alert("Solo se admiten numeros")
-            return false;
+                function validateForm() {
+                    let nombre = document.forms["formulario1"]["nombre"].value;
+                    if (nombre == "" || nombre == " ") {
+                        document.forms["formulario1"]["nombre"].style.borderColor = "red";
+                        alert("El campo Nombre esta vacio");
+                        return false;
+                    }
         
-        if(!/^\d*$/.test(area)){
-            alert("Solo se admiten numeros")
-            return false;
-        }}*/
+                    /*  let telefono = document.forms["formulario1"]["number"].value;
+                      $('form').submit(function () {
+                          $(function () {
+                              var nAlert = $('#nombre-form-alert');
+                              $("#telefono").keyup(function () {
+                                  if ($(this).val().length < 4) {
+                                      nAlert.show();
+        
+                                  } else {
+        
+                                  }
+                              })
+                          })
+        
+                      })
+        
+        */
 
+        /*
+        
+                    let correo = document.forms["formulario1"]["email"].value;
+                    let seleccion = document.forms["formulario1"]["seleccion"].value;
+                    let checkIngles = document.forms["formulario1"]["English"].value;
+                    let checkEspañol = document.forms["formulario1"]["Spanish"].value;
+                    let checkAleman = document.forms["formulario1"]["German"].value;
+                    if (checkIngles == 0) {
+                        alert('selecciona al menos un idioma');
+                    }
+        
+        
+        
+                    let area = document.forms["formulario1"]["areaTexto"].value;
+        
+                    //con expresion regular
+                    //  /^\d*$/   expresion regular para solo numeros
+        
+                    let re = /[0-9]/;
+        
+                    if (seleccion == "") {
+                        document.forms["formulario1"]["seleccion"].style.borderColor = "red";
+                        alert("Debes selecionar un sexo");
+                        return false;
+                    }
+                    /* if(isNaN(area)){
+                         alert("Solo se admiten numeros")
+                         return false;
+                   
+                     if(area!=re){
+                         alert("Solo se admiten numeros")
+                         return false;
+                     
+                     if(!/^\d*$/.test(area)){
+                         alert("Solo se admiten numeros")
+                         return false;
+                     }}*/
 
-        if(!/^\d*$/.test(area)||area==""){
-            document.forms["formulario1"]["areaTexto"].style.borderColor="red";
-
-           
-            return false;
-        }
-
-        if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(correo))){
-            correo.setCustomValidity("no es una estructura correcta de correo");
-            return false;
-        }
-        //
-     } 
+        /*
+                    if (!/^\d*$/.test(area) || area == "") {
+                        document.forms["formulario1"]["areaTexto"].style.borderColor = "red";
+        
+        
+                        return false;
+                    }
+        
+                    if (!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(correo))) {
+                        correo.setCustomValidity("no es una estructura correcta de correo");
+                        return false;
+                    }
+                    //
+                } */
     </script>
-  </body>
+</body>
+
 </html>
