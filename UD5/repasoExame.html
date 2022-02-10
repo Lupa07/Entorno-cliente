@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form validation: Task 1</title>
+    <style>
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--Que todos los campos esten rellenos
+    required con js
+
+    comprobar que los valores de telefono y del correo sea de la estructura correcta
+
+
+
+    cambiar tipo de input email y telefono
+
+
+
+    al campo usuario de min.leng de entre 5 y 20
+
+
+
+    
+    -->
+    <form novalidate id="formulario" onsubmit="return validaVacio()">
+      <h2>Enter your support query</h2>
+      <ul>
+        <li>
+          <label for="uname">User name:</label>
+          <input type="text" name="uname" id="uname" required />
+        </li>
+        <li>
+          <label for="email">Email address:</label>
+          <input type="text" name="email" id="email" required />
+        </li>
+        <li>
+          <label for="phone">Phone number:</label>
+          <input type="text" name="phone" id="phone" required />
+        </li>
+        <li>
+          <label for="comment">Comment:</label>
+          <textarea name="comment" id="comment" required> </textarea>
+        </li>
+        <li>
+          <button>Submit comment</button>
+        </li>
+      </ul>
+      <button  id="botonCount">Hola Pepe2</button>
+    </form>
+    <script>
+
+
+      const inputs = document.querySelectorAll("#formulario input");
+      const expresiones = {
+        nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios
+        correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        telefono: /^\d{9}$/, // 9 digitios
+        areadeTexto: /^[a-zA-ZÀ-ÿ\s]{4,16}$/,
+      };
+//expresiones regulares
+/*
+/a/
+*/
+      const validaVacio = () => {
+        correcto = true;
+        let username = document.forms[0]["uname"].value;
+        let emailname = document.forms[0]["email"].value;
+        let phonename = document.forms[0]["phone"].value;
+
+        if (username == "" || !expresiones.nombre.test(username)) {//expresiones.nombre.test(username)
+          document.forms[0]["uname"].style.borderColor = "red";
+          correcto = false;
+        } else {
+          document.forms[0]["uname"].style.borderColor = "green";
+        }
+        if (emailname == "" || !expresiones.correo.test(emailname)) {
+          document.forms[0]["email"].style.borderColor = "red";
+          correcto = false;
+        } else {
+          document.forms[0]["email"].style.borderColor = "green";
+        }
+        if (phonename == "" || !expresiones.telefono.test(phonename)) {
+          document.forms[0]["phone"].style.borderColor = "red";
+          correcto = false;
+        } else {
+          document.forms[0]["phone"].style.borderColor = "green";
+        }
+
+        return correcto;
+      };
+
+
+      var emailchange=document.getElementsByName('email')
+      emailchange.type=email;
+      
+
+var telfchange=document.getElementsByName('phone')
+telfchange.type=Number;
+
+
+document.forms[0]['uname'].setAttribute('minlength','5')
+document.forms[0]['uname'].setAttribute('maxlength','20')
+document.forms[0]['phone'].setAttribute('minlength','15')
+document.forms[0]['phone'].setAttribute('maxlength','15')
+
+
+var botoncito=document.getElementById('botonCount');
+
+botoncito.addEventListener('click',handler);
+function handler(){
+  alert(botoncito.innerHTML);
+}
+botoncito.addEventListener('click',long);
+function long(){
+  alert(document.forms[0].elements.length)
+}
+botoncito.removeEventListener('click',handler)
+
+var mail = document.forms[0]["email"].value;
+
+            if ((mail == "") || (mail.indexOf("@")<0) || (mail.indexOf(".")<0)){//comprueba que el texto introducido contenga @ y .
+                correcto = false;
+                document.forms[0]["email"].style.borderColor = "red";
+            } else {
+                document.forms[0]["email"].style.borderColor = "green";
+            }
+    </script>
+  </body>
+</html>

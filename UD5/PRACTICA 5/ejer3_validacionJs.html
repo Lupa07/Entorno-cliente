@@ -58,9 +58,12 @@
             <textarea name="areaTexto" minlength="5" maxlength="500"></textarea><br />
 
             <input type="submit" />
+            
         </fieldset>
     </form>
     <script>
+
+        //
         const formulario = document.getElementById("formulario");
         const inputs = document.querySelectorAll("#formulario input");
 
@@ -81,6 +84,7 @@
                         document.forms["formulario1"]["nombre"].style.borderColor = "green";
                     } else {
                         document.forms["formulario1"]["nombre"].style.borderColor = "red";
+                        
 
                     }
                     break;
@@ -106,7 +110,7 @@
                         document.forms["formulario1"]["areaTexto"].style.borderColor = "green";
                     } else {
                         document.forms["formulario1"]["areaTexto"].style.borderColor = "red";
-                        areaTexto.setCustomValidity("No se permiten numeros")
+                        
                     }
                     break;
             }
@@ -165,6 +169,8 @@
 
 
 
+
+   alert('el nuemro de elementos es'+ document.forms[0].length);
 
 
 
