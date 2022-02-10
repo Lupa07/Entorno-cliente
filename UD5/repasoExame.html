@@ -59,12 +59,12 @@
           <button>Submit comment</button>
         </li>
       </ul>
-      <button  id="botonCount">Hola Pepe2</button>
+      <button  id="botonCount">Contar elemento del form</button>
     </form>
     <script>
 
 
-      const inputs = document.querySelectorAll("#formulario input");
+      const inputs = document.querySelectorAll("form input");
       const expresiones = {
         nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios
         correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -130,14 +130,14 @@ function long(){
 }
 botoncito.removeEventListener('click',handler)
 
-var mail = document.forms[0]["email"].value;
+/*var mail = document.forms[0]["email"].value;
 
             if ((mail == "") || (mail.indexOf("@")<0) || (mail.indexOf(".")<0)){//comprueba que el texto introducido contenga @ y .
                 correcto = false;
                 document.forms[0]["email"].style.borderColor = "red";
             } else {
                 document.forms[0]["email"].style.borderColor = "green";
-            }
+            }*/
     </script>
   </body>
 </html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        div{
+
+            margin: 45px;
+            border: 2px solid red;
+        }
+
+        p{
+            margin: 45px;
+            border: 2px solid blue;
+
+        }
+    </style>
+</head>
+
+
+
+<body onclick="hastaelbody()">
+
+
+    <div onclick="alert('div (bubbling)')"> DIV  <!-- Si ponemos el evento aqui es la fase bubbling, aunque si pulsamos el parrafo saltaria-->
+        <p onclick="alert('parrafo (target)')"> PARRAFO </p> <!-- Si ponemos el evento aqui es la fase target-->
+    </div>
+
+    <br><br>
+
+ 
+
+    <div onclick="fases()"> DIV 2   <!-- Si ponemos el evento aqui es la fase bubbling, aunque si pulsamos el parrafo saltaria-->
+        <p id="parrafito" onclick="ejemplo2()"> PARRAFO 2 </p>  <!-- Si ponemos el evento aqui es la fase target-->
+    </div>
+
+
+    <script>
+
+function hastaelbody() {
+            alert('BODY target:' + event.target.tagName + ' currentTarget: ' + event.currentTarget.tagName) + 'Fase ' + event.eventPhase  // current target es el que lo procesa en ese momento
+     }
+
+
+    
+
+    function fases() {
+            alert('DIV target:' + event.target.tagName + ' currentTarget: ' + event.currentTarget.tagName) + 'Fase ' + event.eventPhase  // current target es el que lo procesa en ese momento
+     }
+
+
+
+
+     function ejemplo2() {
+            alert('P target:' + event.target.tagName + '/ currenttarget: ' + event.currentTarget.tagName+'/ Fase ' + event.eventPhase)
+           
+           // event.stopPropagation(); // esto hace que no salga el alert de fases ya que lo ha parado
+
+        }
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
